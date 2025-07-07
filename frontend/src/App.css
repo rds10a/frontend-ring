@@ -1,0 +1,486 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Avenir:wght@400;700&display=swap');
+
+:root {
+  --yellow-gold: #E6CA97;
+  --white-gold: #D9D9D9;
+  --rose-gold: #E1A4A9;
+  --card-radius: 18px;
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  --star-color: #FFD700;
+  --star-empty: #E0E0E0;
+  --font-main: 'Avenir', 'Montserrat', Arial, sans-serif;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('./assets/fonts/avenir/Avenir-Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('./assets/fonts/avenir/Avenir-Black.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/montserat/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/montserat/Montserrat-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body,
+.app {
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: #fff;
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.header h1 {
+  font-family: 'Avenir', 'Montserrat', Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.filter-button {
+  margin-left: auto;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.filter-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.filters {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  position: static;
+  max-width: none;
+}
+
+.filter-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.filter-group input {
+  padding: 12px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.filter-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.clear-filters {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.clear-filters:hover {
+  background: #ff5252;
+  transform: translateY(-1px);
+}
+
+.products-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.product-card {
+  background: #fafafa;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 24px 18px 18px 18px;
+  min-width: 240px;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+}
+
+.product-image-container {
+  background: #fff;
+  border-radius: 16px;
+  width: 220px !important;
+  height: 220px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.product-image {
+  width: 190px !important;
+  height: 190px !important;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.product-info {
+  width: 100%;
+  text-align: left;
+  margin-top: 8px;
+}
+
+.product-name {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 2px;
+  font-family: 'Avenir', 'Montserrat', Arial, sans-serif;
+}
+
+.price-section {
+  font-size: 1.05rem;
+  color: #222;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.color-picker {
+  margin: 10px 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.color-options {
+  display: flex;
+  gap: 8px;
+}
+
+.color-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #eee;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  transition: border 0.2s;
+}
+
+.color-btn[title="Sarı"] {
+  background: var(--yellow-gold);
+}
+
+.color-btn[title="Beyaz"] {
+  background: var(--white-gold);
+}
+
+.color-btn[title="Pembe"] {
+  background: var(--rose-gold);
+}
+
+.color-btn.active {
+  border: 2.5px solid #222;
+}
+
+.color-label {
+  display: none;
+}
+
+.color-name {
+  font-size: 0.9rem;
+  color: #b1a16b;
+  margin-left: 2px;
+  margin-bottom: 2px;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.popularity-section {
+  margin: 10px 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star {
+  font-size: 1.1rem;
+  color: var(--star-empty);
+}
+
+.star.filled {
+  color: var(--star-color);
+}
+
+.popularity-score {
+  font-size: 0.95rem;
+  color: #888;
+  margin-left: 4px;
+}
+
+.carousel-btn {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 1.7rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  cursor: pointer;
+  transition: color 0.2s;
+  opacity: 1;
+  box-shadow: none;
+}
+
+.carousel-btn.prev {
+  left: -32px;
+}
+
+.carousel-btn.next {
+  right: -32px;
+}
+
+.carousel-btn:hover {
+  color: #222;
+}
+
+.no-products {
+  text-align: center;
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+  .products-grid {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .products-grid {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .filters {
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .products-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel-btn.prev,
+  .carousel-btn.next {
+    left: 0;
+    right: 0;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 15px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .filter-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .product-image-container {
+    height: 250px;
+  }
+
+  .carousel-btn {
+    opacity: 1;
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .product-info {
+    padding: 20px;
+  }
+
+  .color-options {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.3rem;
+  }
+
+  .product-image-container {
+    height: 200px;
+  }
+
+  .product-name {
+    font-size: 1.1rem;
+  }
+
+  .price {
+    font-size: 1.3rem;
+  }
+}
+
+/* Büyük ana ok tuşları için stil */
+.main-carousel-btn {
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
+  color: #b1a16b;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  opacity: 0.92;
+  z-index: 20;
+}
+
+.main-carousel-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.main-carousel-btn:hover:not(:disabled) {
+  background: #f7f3e7;
+  color: #e6ca97;
+  box-shadow: 0 4px 18px rgba(177, 161, 107, 0.13);
+}
+
+/* Ürün görselini büyüt */
+.product-image-container {
+  width: 220px !important;
+  height: 220px !important;
+}
+
+.product-image {
+  width: 190px !important;
+  height: 190px !important;
+}
+
+/* Alt çubuğu kaldırmak için (eğer varsa) */
+::-webkit-scrollbar {
+  display: none !important;
+}
