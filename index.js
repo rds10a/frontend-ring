@@ -4,7 +4,8 @@ const fs = require('fs');
 const axios = require('axios');
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
+
 
 // Kendi API key'ini buraya yapıştır
 const API_KEY = 'goldapi-kn2o8vsmctkvaan-io';
