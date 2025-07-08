@@ -20,20 +20,19 @@ function App() {
   const colors = ['yellow', 'rose', 'white'];
   const colorNames = { yellow: 'Sarı', rose: 'Pembe', white: 'Beyaz' };
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+
   useEffect(() => {
     fetchProducts();
-  }, [filters]);
+  }, []);
 
   const fetchProducts = async () => {
     try {
-      const params = new URLSearchParams();
-      Object.entries(filters).forEach(([key, value]) => {
-        if (value) params.append(key, value);
-      });
-
-      const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
-      const response = await fetch(`${API_BASE_URL}/products?${params}`);
+      const url = `${API_BASE_URL}/products`;
+      console.log('API isteği:', url);
+      const response = await fetch(url);
       const data = await response.json();
+      console.log('API verisi:', data);
       setProducts(data);
       const initialColors = {};
       data.forEach((_, idx) => { initialColors[idx] = 'yellow'; });
@@ -110,8 +109,8 @@ function App() {
           </button>
         </>
       )}
-      <header className="header">
-        <h1>💍 Yüzük Koleksiyonu</h1>
+      <header className="header" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px', marginBottom: '20px' }}>
+        <h1 style={{ textAlign: 'center', flex: 1 }}>💍 Yüzük Listesi</h1>
         <button
           className="filter-button"
           onClick={() => setShowFilters(!showFilters)}
@@ -221,13 +220,13 @@ function App() {
                     {[1, 2, 3, 4, 5].map((star) => (
                       <span
                         key={star}
-                        className={`star ${star <= Math.round(product.popularityScore5) ? 'filled' : ''}`}
+                        className={`star ${star <= Math.round(product.popularityScore * 5) ? 'filled' : ''}`}
                       >
                         ★
                       </span>
                     ))}
                   </div>
-                  <span className="popularity-score">{product.popularityScore5}/5</span>
+                  <span className="popularity-score">{(product.popularityScore * 5).toFixed(1)}/5</span>
                 </div>
               </div>
             </div>
